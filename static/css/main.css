@@ -1,0 +1,153 @@
+/* css text index */
+.text-index{
+  border:0px; 
+  font-size:15px;
+  font-weight: 600;
+  color:#333;
+  
+}
+
+/* css login */
+.password{
+  border: 1px solid #ddd;
+   background-color:#ddd
+}
+.me-1{
+  font-style: normal;
+  font-size: 13px;
+}
+
+/* pm */
+.btn-pmm{
+  font-size:15px;
+  background-color: #3c8dbc;
+  border-color: #367fa9;
+}.a-pmm:hover{
+  color:#7c2121;
+}
+
+@media (min-width:767px){
+  .page-title-right{
+    float: right;
+ 
+  }
+}
+
+@media (max-width:767px){
+  .page-title-right{
+    float: left;
+ 
+  }
+}
+
+/* css show sản phẩm gian hàng */
+.hcol-12 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 576px){
+.hcol-sm-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 45%;
+  }
+}
+
+@media (min-width: 770px){
+  .hl-col {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      width: 35%;
+  }
+}
+
+@media (min-width: 992px){
+  .h-col {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      width: 33%;
+  }
+}
+  
+
+
+@media (min-width: 1200px){
+  .hcol-lg-3 {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      width: 25%;
+  }
+}
+
+.our-team .ico-team.teamss{
+  margin:0px;
+}
+.team{
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.text-li{
+  display: block;
+  list-style:none;
+  max-width:100%;
+  text-align:center;
+  margin-bottom:5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(97, 93, 93);
+  font-family: 'Times New Roman', Times, serif;
+
+}
+.btn_view{
+  margin-bottom: 3px;
+}
+.title{
+  padding-left:5px;
+
+}
+.title-name{
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 40px;
+  font-size: 15px;
+}
+
+
+.h-tab{
+  min-height: 65vh;
+}
+
+.tablehover tbody tr:hover td { background: #d6f3e9; }
+
+.clearable{
+  position: relative;
+  display: inline-block;
+}
+.clearable input[type=text]{
+  padding-right: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.clearable__clear{
+  display: none;
+  position: absolute;
+  right:0; top:0;
+  padding: 0 8px;
+  font-style: normal;
+  font-size: 28px;
+  user-select: none;
+  cursor: pointer;
+}
+.clearable input::-ms-clear {  /* Remove IE default X */
+  display: none;
+}

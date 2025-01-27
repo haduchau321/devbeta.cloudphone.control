@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Phone Cloud Control</title>
+    <link rel="stylesheet" href="static/remote.phone/android.css">
+</head>
+<body>
+   <div class="displayContainer"></div>
+
+   <script src="static/js/jquery.min.js"></script>
+   <script src="static/remote.phone/android.js"></script>
+
+   <script>
+      $(document).ready(async function() {
+         var ws_socket_url = "192.168.0.103:8080";
+         var display_element = ".displayContainer";
+         var config_data = {
+            "device_id":"85211126",
+            "passwd":"1234",
+            "get_data":"base64"
+         }
+         var remote = new RemoteAndroid(display_element, config_data, ws_socket_url);
+         remote.control();
+         $(remote.image_id).one('load',function() {
+            remote.fix_size();
+         })
+      })
+   </script>
+
+</body>
+</html>
