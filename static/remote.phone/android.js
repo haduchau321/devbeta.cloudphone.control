@@ -133,12 +133,18 @@ class RemoteAndroid {
       };
       this.ws_control.onmessage = function(evt) {
          var json_ = JSON.parse(evt.data);
+         if(json_.action=="connect"){
+            jQuery(`${_this.loader_id} .loader-text`).text(json_.msg);
+            if(json_.status==true){
+               _this.ws_control.send(_this.json_send_format({"action":"onScreenEvent"}));
+            }
+         }
          if(json_.action=="screen"){
             jQuery(_this.image_id).attr("src","data:image/png;base64,"+json_.base64);
          }
          if(json_.action=="copy"){
-            console.log("copy text",json_.data)
-            navigator.clipboard.writeText(json_.data);
+            console.log("copy text",json_.text)
+            navigator.clipboard.writeText(json_.text);
          }
       };
    }
@@ -169,10 +175,11 @@ class RemoteAndroid {
          if(key=="c"){
             data["typeKey"] = "KEYBOARD_CODE";
             data["meta_state"] = 4096
+            data["key"] = 31
          }
          else if(key=="a"){
             data["typeKey"] = "KEYBOARD_CODE";
-            data["meta_state"] = 8192
+            data["meta_state"] = 4096
             data["key"] = 29 
          }
          else if(key=="v"){
@@ -192,7 +199,7 @@ class RemoteAndroid {
          data["typeKey"] = "KEYBOARD_CODE";
          data["key"] = 61
       }
-      if(data.type == "keyText"){
+      if(data.type == "KEYBOARD_TEXT"){
          if(e.shiftKey == true){
             data["key"] = data.key.toUpperCase();
          }
@@ -255,12 +262,12 @@ class RemoteAndroid {
       [this.screen_id,this.menu_bottom].map((item)=>{
          jQuery(item).show();
       })
-      // var img_ = jQuery(this.screen_id);
-      // var ratio = img_.width()/img_.height();
-      // var ratio_width = window.innerHeight*ratio;
-      // var fix_width = this.isMobile==true?30:30;
-      // var to_width = ratio_width-fix_width;
-      // screen_main.width(to_width);
+      var img_ = jQuery(this.screen_id);
+      var ratio = img_.width()/img_.height();
+      var ratio_width = window.innerHeight*ratio;
+      var fix_width = this.isMobile==true?30:30;
+      var to_width = ratio_width-fix_width;
+      screen_main.width(to_width);
    }
 }
 
