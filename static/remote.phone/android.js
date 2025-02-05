@@ -142,7 +142,7 @@ class RemoteAndroid {
          if(json_.action=="screen"){
             jQuery(_this.image_id).attr("src","data:image/png;base64,"+json_.base64);
          }
-         if(json_.action=="copy"){
+         if(json_.action=="COPY_TEXT"){
             console.log("copy text",json_.text)
             navigator.clipboard.writeText(json_.text);
          }
@@ -173,9 +173,7 @@ class RemoteAndroid {
       }
       if(e.ctrlKey == true){
          if(key=="c"){
-            data["typeKey"] = "KEYBOARD_CODE";
-            data["meta_state"] = 4096
-            data["key"] = 31
+            data["typeKey"] = "COPY_TEXT";
          }
          else if(key=="a"){
             data["typeKey"] = "KEYBOARD_CODE";
@@ -183,9 +181,25 @@ class RemoteAndroid {
             data["key"] = 29 
          }
          else if(key=="v"){
-            data["type"] = "paste";
+            data["typeKey"] = "PASTE_TEXT";
             data["key"] = await navigator.clipboard.readText();
          }
+      }
+      else if(key=="arrowup"){
+         data["typeKey"] = "KEYBOARD_CODE";
+         data["key"] = 19
+      }
+      else if(key=="arrowdown"){
+         data["typeKey"] = "KEYBOARD_CODE";
+         data["key"] = 20
+      }
+      else if(key=="arrowleft"){
+         data["typeKey"] = "KEYBOARD_CODE";
+         data["key"] = 21
+      }
+      else if(key=="arrowright"){
+         data["typeKey"] = "KEYBOARD_CODE";
+         data["key"] = 22
       }
       else if(key=="backspace"){
          data["typeKey"] = "KEYBOARD_CODE";
@@ -220,11 +234,9 @@ class RemoteAndroid {
       e.preventDefault();
       var delta = Math.sign(e.originalEvent.deltaY);
       var data = {
-         "type":"wheel",
+         "action":"wheel",
          "width":el.width(),
          "height":el.height(),
-         "x":el.width()/2,
-         "y":el.height()/2,
          "delta":delta
       }
       this.ws_control.send(this.json_send_format(data));
